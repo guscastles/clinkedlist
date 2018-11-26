@@ -12,4 +12,4 @@ This is a simple exercise to create linked list data structures useing the C pro
 
 ## Github Repository
 
-> https://github.com/guscastles/linkedlist
+> [Linked List in C](https://github.com/guscastles/clinkedlist)
