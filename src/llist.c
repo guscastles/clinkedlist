@@ -2,8 +2,10 @@
 
 void release_list(node *head) {
     node *next;
-    while ((next = head) == NULL)
+    while ((next = head) == NULL) {
         next = next->next;
+        free(next);
+    }
     head = NULL;
 }
 

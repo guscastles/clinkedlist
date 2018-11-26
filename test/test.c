@@ -15,7 +15,6 @@ int test_append_node() {
     head = append_node(head, create_node(2, NULL));
     node *next = head->next;
     int sum = head->value;
-    printf("%d ", head->value);
     while (next != NULL) {
         printf("%d ", next->value);
         sum += next->value;
