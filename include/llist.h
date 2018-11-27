@@ -17,3 +17,5 @@ node *pop_node(node *head);
 
 node *push_node(node *head, node *new_head);
 
+node *insert_node(node *head, node *new_node, size_t position);
+

@@ -40,3 +40,15 @@ node *push_node(node *head, node *new_head) {
     return new_head;
  }
 
+node *insert_node(node *head, node *new_node, size_t position) {
+    node *next, *previous = head;
+    for(int i = 0; i < position && next != NULL; ++i, next = next->next)
+        previous = next;
+    if (next != NULL) {
+        new_node->next = next;
+        previous->next = new_node;
+    }
+
+    return head;
+}
+
