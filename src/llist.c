@@ -9,14 +9,14 @@ void release_list(node *head) {
     head = NULL;
 }
 
-node *create_node(int value) {
+node *create_list(int value) {
     node *new_node = malloc(sizeof(node));
     new_node->value = value;
     new_node->next = NULL;
     return new_node;
 }
 
-node *append_node(node *head, node *new_node) {
+node *append_list(node *head, node *new_node) {
     node *current = head;
     node *next = current->next;
     while (next != NULL) {

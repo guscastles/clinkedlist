@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include "llist.h"
 
-int test_append_node() {
-    node *head = create_node(1);
-    head = append_node(head, create_node(2));
+int test_append_list() {
+    node *head = create_list(1);
+    head = append_list(head, create_list(2));
     node *next = head->next;
     int sum = head->value;
     while (next != NULL) {
@@ -16,6 +16,6 @@ int test_append_node() {
 }
 
 int main() {
-    return test_append_node();
+    return test_append_list();
 }
 
