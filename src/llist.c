@@ -9,10 +9,10 @@ void release_list(node *head) {
     head = NULL;
 }
 
-node *create_node(int value, node *next) {
+node *create_node(int value) {
     node *new_node = malloc(sizeof(node));
     new_node->value = value;
-    new_node->next = next;
+    new_node->next = NULL;
     return new_node;
 }
 
@@ -27,4 +27,16 @@ node *append_node(node *head, node *new_node) {
     new_node->next = next;
     return head;
 }
+
+node *pop_node(node *head) {
+    node *new_head = head->next;
+    head->next = NULL;
+    release_list(head);
+    return new_head;
+ }
+
+node *push_node(node *head, node *new_head) {
+    new_head->next = head; 
+    return new_head;
+ }
 
