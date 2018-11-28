@@ -76,7 +76,5 @@ Any contributions are welcome, since this is a learning journey. Fork it on gith
 
 ## The Author
 
-Please find me on [LinkedIn][1].
-
-[1]: https//linkedin.com/in/guscastles
+Please find me on [LinkedIn](https//linkedin.com/in/guscastles)
 
