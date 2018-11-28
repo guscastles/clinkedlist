@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "llist.h"
 
 void release_list(node *head) {
@@ -38,7 +39,7 @@ node *pop_node(node *head) {
         return new_head;
     }
     return head;
- }
+}
 
 node *push_node(node *head, node *new_head) {
     if (new_head != NULL) {
@@ -46,26 +47,24 @@ node *push_node(node *head, node *new_head) {
         return new_head;
     }
     return head;
- }
+}
 
 node *node_at(node *head, size_t position) {
-    node *next;
-    for(int i = 0, next = head; i < position && next != NULL; ++i, next = next->next) {}
+    node *next = head;
+    for(int i = 0; i < position && next != NULL; ++i, next = next->next) {}
     return next;
 }
 
 node *insert_node(node *head, node *new_node, size_t position) {
-    if (position > 0 && head != NULL)
-        if (position == 0 && new_node != NULL) {
-            new_node->next = head;
-            head = new_node;
-        } else {
-            node *previous = node_at(head, position - 1);
-            node *found = previous->next;
-            if (found != NULL || i == position)
-                new_node->next = found;
+    if (position == 0) {
+        head = push_node(head, new_node);
+    } else if (position > 0 && head != NULL) {
+        node *previous = node_at(head, position - 1);
+        if (previous != NULL) {
+            new_node->next = previous->next;
             previous->next = new_node;
         }
+    }
     return head;
 }
 

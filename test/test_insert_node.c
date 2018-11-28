@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "test.h"
 #include "llist.h"
 
 int test_insert_node() {
@@ -9,7 +10,7 @@ int test_insert_node() {
     return !(value == 3);
 }
 
-int test_insert_node_at_wrong_position() {
+int test_insert_node_at_non_existing_position() {
     node *head = create_list(1);
     head = insert_node(append_list(head, create_list(2)), create_list(3), 4);
     int value = head->next->value;
@@ -45,10 +46,10 @@ int test_insert_node_at_first_position() {
 
 int main() {
     int test_1 = test_insert_node();
-    int test_2 = test_insert_node_at_wrong_position();
+    int test_2 = test_insert_node_at_non_existing_position();
     int test_3 = test_insert_node_in_null_list();
     int test_4 = test_insert_node_at_last_position();
     int test_5 = test_insert_node_at_first_position();
-    return (test_1 || test_2 || test_3 || test_4 || test_5);
+    return test_result(5, test_1, test_2, test_3, test_4, test_5);
 }
 
