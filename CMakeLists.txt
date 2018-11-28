@@ -5,7 +5,13 @@ set(TEST_SOURCES test/test.c)
 set(CMAKE_BUILDTYPE Debug)
 include_directories(include)
 add_executable(main src/main.c ${SOURCES})
-
+add_library(llist ${SOURCES})
+install(TARGETS llist
+        DESTINATION ~/.local/lib
+)
+install(FILES include/llist.h
+        DESTINATION ~/.local/include
+)
 enable_testing( ${TEST_SOURCES})
 add_executable(test_create_node test/test_create_node.c ${SOURCES} ${TEST_SOURCES})
 add_test(test_create_node ${EXECUTABLE_OUTPUT_PATH}/test_create_node ${TEST_SOURCES})

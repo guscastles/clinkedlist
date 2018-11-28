@@ -68,3 +68,23 @@ node *insert_node(node *head, node *new_node, size_t position) {
     return head;
 }
 
+node *remove_node(node *head, size_t position) {
+    if (head != NULL) {
+        if (position == 0)
+            head = head->next;
+        else {
+            node* next = head->next;
+            node* previous = head;
+            int i = 0;
+            while (i < position - 1 && next != NULL) {
+                previous = next;
+                next = next->next;
+                ++i;
+            }
+            if (next != NULL)
+                previous->next = next->next;
+        }
+    }
+    return head;
+}
+
