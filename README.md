@@ -70,6 +70,38 @@ Highest score:              2 (append_list() in ../src/llist.c)
 
 I am not totally happy with the *remove_node* function, but it is a living entity, as any software endeavour.
 
+### Cyclomatic Complexity
+
+Still a bit high, but better than I first started.
+
+```
+Function prototype                   LOC      MVG
+------------------                   ---      ---
+append_list(node *, node *)
+definition   src/llist.c:20           13        3
+
+create_list(int)
+definition   src/llist.c:13            6        1
+
+insert_node(node *, node *, size_t)
+definition   src/llist.c:61           12        4
+
+node_at(node *, size_t)
+definition   src/llist.c:54            6        3
+
+pop_node(node *)
+definition   src/llist.c:34            9        2
+
+push_node(node *, node *)
+definition   src/llist.c:44            9        2
+
+release_list(node *)
+definition   src/llist.c:4             8        1
+
+remove_node(node *, size_t)
+definition   src/llist.c:74           11        5
+```
+
 ## Contribute and Join the Fun
 
 Any contributions are welcome, since this is a learning journey. Fork it on github and let me know. Cheers!
