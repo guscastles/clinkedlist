@@ -37,7 +37,7 @@ node *remove_node(node *head, size_t position);
 
 ## Abstract
 
-This is on of the simplest data structure algorithms to start learning, hence the choice in my comeback to the C programming language. I tried to apply all the concepts of clean code and test-driven development, using the very simple mechanism provided by the *ctest* application. Also I used the complexity *application* to verify the maintainability of the code.
+This is one of the simplest data structure algorithms to start learning, hence the choice in my comeback to the C programming language. I tried to apply all the concepts of clean code and test-driven development, using the very simple mechanism provided by the *ctest* application. Also I used the complexity *application* to verify the maintainability of the code.
 
 This is the output for the *llist.c* file:
 
@@ -46,26 +46,26 @@ This is the output for the *llist.c* file:
 ```
 Complexity Scores
 Score | ln-ct | nc-lns| file-name(line): proc-name
-    1       3       3   ../src/llist.c(50): node_at
     1       4       4   ../src/llist.c(11): create_list
-    1       5       5   ../src/llist.c(42): push_node
+    1       4       4   ../src/llist.c(52): node_at
     1       6       6   ../src/llist.c(2): release_list
     1       7       7   ../src/llist.c(32): pop_node
-    2      10      10   ../src/llist.c(56): insert_node
+    1       7       7   ../src/llist.c(42): push_node
+    1      10      10   ../src/llist.c(59): insert_node
+    2       9       9   ../src/llist.c(72): remove_node
     2      11      11   ../src/llist.c(18): append_list
-    4      17      17   ../src/llist.c(69): remove_node
 
 Complexity Histogram
 Score-Range  Lin-Ct
-    0-9          63 ************************************************************
+    0-9          58 ************************************************************
 
 Scored procedure ct:        8
-Non-comment line ct:       63
-Average line score:         2
+Non-comment line ct:       58
+Average line score:         1
 25%-ile score:              1 (75% in higher score procs)
-50%-ile score:              2 (half in higher score procs)
+50%-ile score:              1 (half in higher score procs)
 75%-ile score:              2 (25% in higher score procs)
-Highest score:              4 (remove_node() in ../src/llist.c)
+Highest score:              2 (append_list() in ../src/llist.c)
 ```
 
 I am not totally happy with the *remove_node* function, but it is a living entity, as any software endeavour.
