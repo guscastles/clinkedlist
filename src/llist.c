@@ -20,7 +20,7 @@ node *create_list(int value) {
 node *append_list(node *head, node *new_node) {
     if (head != NULL) {
         node *current = head;
-        node *next = current->next;
+        node *next = head->next;
         while (next != NULL) {
             current = next;
             next = next->next;
@@ -32,33 +32,36 @@ node *append_list(node *head, node *new_node) {
 }
 
 node *pop_node(node *head) {
+    node *new_head = head;
     if (head != NULL) {
-        node *new_head = head->next;
+        new_head = head->next;
         head->next = NULL;
         release_list(head);
-        return new_head;
     }
-    return head;
+    return new_head;
 }
 
 node *push_node(node *head, node *new_head) {
-    if (new_head != NULL) {
-        new_head->next = head;
-        return new_head;
+    node *hd = head;
+    node *nhd = new_head;
+    if (nhd != NULL) {
+        nhd->next = head;
+        hd = new_head;
     }
-    return head;
+    return hd;
 }
 
 node *node_at(node *head, size_t position) {
     node *next = head;
-    for(int i = 0; i < position && next != NULL; ++i, next = next->next) {}
+    int i = 0;
+    while (i++ < position && (next = next->next) != NULL) {}
     return next;
 }
 
 node *insert_node(node *head, node *new_node, size_t position) {
     if (position == 0) {
         head = push_node(head, new_node);
-    } else if (position > 0 && head != NULL) {
+    } else if (head != NULL) {
         node *previous = node_at(head, position - 1);
         if (previous != NULL) {
             new_node->next = previous->next;
@@ -69,22 +72,14 @@ node *insert_node(node *head, node *new_node, size_t position) {
 }
 
 node *remove_node(node *head, size_t position) {
-    if (head != NULL) {
+    if (head != NULL)
         if (position == 0)
             head = head->next;
         else {
-            node* next = head->next;
-            node* previous = head;
-            int i = 0;
-            while (i < position - 1 && next != NULL) {
-                previous = next;
-                next = next->next;
-                ++i;
-            }
-            if (next != NULL)
-                previous->next = next->next;
+            node* one_node_before = node_at(head, position - 1);
+            if (one_node_before != NULL && one_node_before->next != NULL)
+                one_node_before->next = one_node_before->next->next;
         }
-    }
     return head;
 }
 
