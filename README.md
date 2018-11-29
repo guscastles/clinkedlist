@@ -101,7 +101,8 @@ definition   src/llist.c:4             8        1
 remove_node(node *, size_t)
 definition   src/llist.c:74           11        5
 ```
-> Average: 2.625
+> Average LOC: 9.25
+Average MVG: 2.625
 
 ## Contribute and Join the Fun
 
