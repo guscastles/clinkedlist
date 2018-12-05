@@ -25,3 +25,5 @@ add_executable(test_insert_node test/test_insert_node.c ${SOURCES} ${TEST_SOURCE
 add_test(test_insert_node ${EXECUTABLE_OUTPUT_PATH}/test_insert_node ${TEST_SOURCES})
 add_executable(test_remove_node test/test_remove_node.c ${SOURCES} ${TEST_SOURCES})
 add_test(test_remove_node ${EXECUTABLE_OUTPUT_PATH}/test_remove_node ${TEST_SOURCES})
+add_executable(test_list_size test/test_list_size.c ${SOURCES} ${TEST_SOURCES})
+add_test(test_list_size ${EXECUTABLE_OUTPUT_PATH}/test_list_size ${TEST_SOURCES})

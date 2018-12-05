@@ -2,12 +2,14 @@
 #include "llist.h"
 
 void release_list(node *head) {
-    node *next = head;
-    while (next != NULL) {
-        next = next->next;
+    if (head != NULL) {
+        node *next = head;
+        while (next->next != NULL) {
+            free(next);
+            next = next->next;
+        }
         free(next);
     }
-    head = NULL;
 }
 
 node *create_list(int value) {
@@ -83,3 +85,8 @@ node *remove_node(node *head, size_t position) {
     return head;
 }
 
+int list_size(node* head) {
+    int i = 0;
+    for (node* next = head; next != NULL; ++i, next = next->next) {}
+    return i;
+}

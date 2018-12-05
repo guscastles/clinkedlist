@@ -23,3 +23,5 @@ node *insert_node(node *head, node *new_node, size_t position);
 
 node *remove_node(node *head, size_t position);
 
+int list_size(node *head);
+
