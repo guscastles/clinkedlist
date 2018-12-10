@@ -3,7 +3,7 @@
 #include "llist.h"
 
 void test_list_size() {
-    node *head = create_list(1);
+    NODE *head = create_list(1);
     head = append_list(head, create_list(2));
     int size = list_size(head);
     release_list(head);

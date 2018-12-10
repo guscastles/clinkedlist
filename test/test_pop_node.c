@@ -1,10 +1,10 @@
 #include "llist.h"
 
 int test_pop_node() {
-    node *head = create_list(1);
+    NODE head = create_list(1);
     head = append_list(head, create_list(2));
-    head = pop_node(head);
-    int result = head->value == 2 && head->next == NULL;
+    TUPLE pair = pop_node(head);
+    int result = pair.node.value == 1 && pair.list->value == 2;
     release_list(head);
     return !result;
 }

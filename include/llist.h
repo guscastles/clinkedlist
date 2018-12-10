@@ -5,23 +5,30 @@ struct linked_list_node {
     struct linked_list_node *next;
 };
 
-typedef struct linked_list_node node;
+typedef struct linked_list_node NODE;
 
-void release_list(node *head);
+struct tuple {
+    NODE node;
+    NODE *list;
+};
 
-node *create_list(int value);
+typedef struct tuple TUPLE;
 
-node *append_list(node *head, node *new_node);
+void release_list(NODE head);
 
-node *pop_node(node *head);
+NODE create_list(int value);
 
-node *push_node(node *head, node *new_head);
+NODE append_list(NODE head, NODE new_node);
 
-node *node_at(node *head, size_t position);
+TUPLE pop_node(NODE head);
 
-node *insert_node(node *head, node *new_node, size_t position);
+NODE push_node(NODE head, NODE new_head);
 
-node *remove_node(node *head, size_t position);
+NODE *node_at(NODE *head, size_t position);
 
-int list_size(node *head);
+NODE *insert_node(NODE *head, NODE *new_node, size_t position);
+
+NODE *remove_node(NODE *head, size_t position);
+
+int list_size(NODE *head);
 
