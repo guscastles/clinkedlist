@@ -3,45 +3,45 @@
 #include "llist.h"
 
 int test_insert_node() {
-    node *head = create_list(1);
+    NODE head = create_list(1);
     head = insert_node(append_list(head, create_list(2)), create_list(3), 1);
-    int value = head->next->value;
+    int value = head.next->next->value;
     release_list(head);
     return !(value == 3);
 }
 
 int test_insert_node_at_non_existing_position() {
-    node *head = create_list(1);
+    NODE head = create_list(1);
     head = insert_node(append_list(head, create_list(2)), create_list(3), 4);
-    int value = head->next->value;
-    node *next = head->next->next;
+    int value = head.next->value;
+    NODE *next = head.next->next;
     release_list(head);
     return !(value == 2 && next == NULL);
 }
 
 int test_insert_node_in_null_list() {
-    node *head = NULL;
+    NODE head;
     head = insert_node(head, create_list(1), 1);
-    return !(head == NULL);
+    return !(head.next == NULL);
 }
 
 int test_insert_node_at_last_position() {
-    node *head = create_list(1);
-    head = insert_node(append_list(head, create_list(2)), create_list(3), 2);
-    int value = head->next->next->value;
-    node *next = head->next->next->next;
+    NODE head = create_list(1);
+    head = insert_node(insert_node(head, create_list(2), 1), create_list(3), 2);
+    int value = head.next->next->value;
+    NODE *next = head.next->next->next;
     release_list(head);
     return !(value == 3 && next == NULL);
 }
 
 int test_insert_node_at_first_position() {
-    node *head = create_list(1);
-    node *initial_head = head;
+    NODE head = create_list(1);
+    NODE initial_head = head;
     head = insert_node(head, create_list(2), 0);
-    int value = head->value;
-    node *next = head->next;
+    int value = head.value;
+    int initial_value = head.next->value;
     release_list(head);
-    return !(value == 2 && next == initial_head);
+    return !(value == 2 && initial_value == initial_head.value);
 }
 
 int main() {
