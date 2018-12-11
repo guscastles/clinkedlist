@@ -26,9 +26,9 @@ NODE push_node(NODE head, NODE new_head);
 
 NODE *node_at(NODE *head, size_t position);
 
-NODE *insert_node(NODE *head, NODE *new_node, size_t position);
+NODE insert_node(NODE head, NODE new_node, size_t position);
 
-NODE *remove_node(NODE *head, size_t position);
+NODE remove_node(NODE head, size_t position);
 
-int list_size(NODE *head);
+int list_size(NODE head);
 

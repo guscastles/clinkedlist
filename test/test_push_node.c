@@ -1,12 +1,14 @@
+#include <assert.h>
 #include "llist.h"
 
 int test_push_node() {
-    node *head = create_list(1);
+    NODE head = create_list(3);
     head = append_list(head, create_list(2));
-    head = push_node(head, create_list(3));
-    int result = head->value == 3 && head->next->value == 1;
-    release_list(head);
-    return !result;
+    NODE new_head = push_node(head, create_list(1));
+    assert(new_head.value == 1);
+    assert(new_head.next->next->value == 2);
+    release_list(new_head);
+    return 0;
 }
 
 int main() {

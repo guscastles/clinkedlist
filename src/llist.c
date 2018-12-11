@@ -2,7 +2,7 @@
 #include "llist.h"
 
 void release_list(NODE head) {
-    NODE *next = (NODE *)head.next;
+    NODE *next = head.next;
     NODE *next_node = NULL;
     while (next != NULL) {
         next_node = next->next;
@@ -48,7 +48,10 @@ TUPLE pop_node(NODE head) {
 }
 
 NODE push_node(NODE head, NODE new_head) {
-    new_head.next = &head;
+    NODE *new_list = malloc(sizeof(NODE));
+    new_list->value = head.value;
+    new_list->next = head.next;
+    new_head.next = new_list;
     return new_head;
 }
 
@@ -59,33 +62,36 @@ NODE *node_at(NODE *head, size_t position) {
     return next;
 }
 
-NODE *insert_node(NODE *head, NODE *new_node, size_t position) {
+NODE insert_node(NODE head, NODE new_node, size_t position) {
     if (position == 0) {
-        *head = push_node(*head, *new_node);
-    } else if (head != NULL) {
-        NODE *previous = node_at(head, position - 1);
+        head = push_node(head, new_node);
+    } else if (head.next != NULL) {
+        NODE *previous = node_at(head.next, position - 1);
         if (previous != NULL) {
-            new_node->next = previous->next;
-            previous->next = new_node;
+            NODE *node = malloc(sizeof(NODE));
+            node->value = new_node.value;
+            node->next = previous->next;
+            previous->next = node;
         }
     }
     return head;
 }
 
-NODE *remove_node(NODE *head, size_t position) {
-    if (head != NULL)
-        if (position == 0)
-            head = head->next;
-        else {
-            NODE* one_node_before = node_at(head, position - 1);
-            if (one_node_before != NULL && one_node_before->next != NULL)
-                one_node_before->next = one_node_before->next->next;
-        }
+NODE remove_node(NODE head, size_t position) {
+    NODE new_head;
+    if (position == 0) {
+        head.value = head.next->value;
+        head.next = head.next->next;
+    } else {
+        NODE* one_node_before = node_at(head.next, position - 1);
+        if (one_node_before != NULL && one_node_before->next != NULL)
+            one_node_before->next = one_node_before->next->next;
+    }
     return head;
 }
 
-int list_size(NODE* head) {
-    int i = 0;
-    for (NODE* next = head; next != NULL; ++i, next = next->next) {}
+int list_size(NODE head) {
+    int i = 1;
+    for (NODE* next = head.next; next != NULL; ++i, next = next->next) {}
     return i;
 }
